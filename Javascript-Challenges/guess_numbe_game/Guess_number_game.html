@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Game</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div>
+            <div class="Number of guess" id="numguess">Number of guess: 0</div>
+        </div>
+        <h1>Guess The Number between 1 to 100</h1>
+        <input type="text" name="guessnum" id="guessnum" placeholder="Enter the number">
+        <p id="message"></p>
+        <button onclick="checkNum()">Guess</button>
+        <button onclick="playAgain()">Play Again</button>
+    </div>
+
+    
+    <script>
+        let randomNum = Math.floor(Math.random()*100);
+        let c = 0;
+        function checkNum(){
+            let num = document.getElementById('guessnum').value;
+            //  alert(num);
+            if(randomNum == num){
+                document.getElementById('message').innerText = "Congratulation! You have guessed the correct number";
+                document.getElementById('numguess').innerText = "Number of guess: " + c;
+            }else if(randomNum > num){
+                document.getElementById('message').innerText = "You have guessed the lower number"; 
+                c++;
+                document.getElementById('numguess').innerText = "Number of guess: " + c;
+            }else{
+                document.getElementById('message').innerText = "You have guessed the higher number";
+                c++;
+                document.getElementById('numguess').innerText = "Number of guess: " + c;
+            }
+            if(c > 2){
+                document.getElementById('message').innerText = 'You Excceded guess limit' +  c  + '.';  
+                c=0;
+                document.getElementById('numguess').innerText = "Number of guess: " + c;
+                
+            }
+        
+        }
+        function playAgain(){
+            c=0;
+            document.getElementById('message').innerText = ""; 
+            document.getElementById('numguess').innerText = c;
+            document.getElementById('guessnum').value = '';
+            num = Math.floor(Math.random()*100);
+        }
+
+    </script>
+</body>
+</html>
