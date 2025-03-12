@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Inputs live characeter counter </title>
+    <style>
+        body{font: 1em sans-serif;color: #fff;background-color: #000;}
+        h1{text-align: center;font-size: 25px;margin-bottom: 20px;}
+        textarea{
+            width:470px;margin: 0 auto;display: block;padding: 15px;background-color: #333;color: #fff;font-size: 15px;
+        }
+        #counter{max-width: 500px;text-align: right;font-size: 12px;display: block;margin: 10px auto;}
+    </style>
+</head>
+<body>
+    <!--- Problem: Live Character Counter
+    Task: Create a real-time character counter for a text area input.
+    -->
+    <h1>Live Characters counter programe</h1>
+    <textarea id="info" cols="30" rows="10" maxlength="100"></textarea>
+    <span id="counter"><span id="c">100</span> characters left</span>
+    <script>
+        let textarea = document.getElementById('info');
+        let counter = document.getElementById('c');
+        let maxlength = textarea.getAttribute('maxlength');
+        textarea.addEventListener('input',()=>{
+            let textlength = textarea.value.length;
+            let remainingchars =maxlength - textlength;
+            if(remainingchars <=5){
+                document.getElementById('counter').style.color = 'red';
+            }
+            counter.innerText = remainingchars;
+        });
+
+    </script>
+</body>
+</html>
