@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Dom manipulaion</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h1{
+            color: #3a8fb7;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 20px
+        }
+        input#time {
+            max-height: 30px;
+            border: solid 2px #999;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        div.cta {
+            display: flex;
+            gap: 10px;
+        }
+        div button {
+            padding: 10px 20px;
+            background: #3a8fb7;
+            color:#fff;
+            font-weight:700;
+            font-size:17px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 1px 1px 3px 0px #000;
+            cursor: pointer;
+        }
+
+        div button:hover {
+            background: #244b72;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--      Problem: Dynamic Countdown Timer  
+            
+    Task:
+            Create a Countdown Timer where a user enters a number (in seconds), 
+            and the timer starts counting down to zero dynamically.
+    
+    
+    -->
+        <h1> Countdown Timer</h1>
+        <input type="text" id="time" placeholer="Enter Time In seconds" value="5">  
+        <div class="cta">
+            <button id="start" onclick="startTime()">Start Timer</button>
+            <button id="pause" onclick="pauseTime()">Pause Timer</button>
+            <button id="reset" onclick="resetTime()">Reset Timer</button>
+        </div>
+<script>
+    let time = document.getElementById('time');
+    let timer;
+    //console.log(t)
+    function startTime(){      
+        let t = time.value;
+        // console.log(t); 
+        timer = setInterval(()=>{
+           
+            if(t <=0){
+                clearInterval(timer);
+            }
+            else{
+                t--;
+                if(t<5){
+                    time.style.background = 'red';
+                    time.style.color = '#fff';
+                }
+                time.value = t;
+            }
+        }, 1000);
+    }
+    function pauseTime(){
+        clearInterval(timer);
+    }
+    function resetTime(){
+        clearInterval(timer);
+        time.value = 0;
+        
+    }
+
+</script>
+</body>
+</html>
