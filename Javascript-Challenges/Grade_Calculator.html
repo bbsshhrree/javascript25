@@ -1,0 +1,132 @@
+<!-- 
+ Problem 1: Grade Calculator
+
+Task:
+
+    Write a program that takes a student's marks (out of 100) as input.
+    Use conditional statements to print the grade based on the following criteria:
+        90-100: Grade A
+        80-89: Grade B
+        70-79: Grade C
+        60-69: Grade D
+        Below 60: Grade F
+
+Bonus:
+
+    Validate the input to ensure it is within the 0-100 range.
+-->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grade Calculator</title>
+        <style>
+        section.calc {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background: #333;
+            color: #fff;
+            font-family: monospace;
+            font-size: 17px;
+        }
+
+        section.calc h1 {
+            margin: 0 0 20px;
+            color: #d8db19;
+        }
+
+        .inputmrk {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        div#output {
+            background: #2a2a2a;
+            color: #fff;
+            padding: 10px 0;
+            border-radius: 10px 0;
+        }
+        #output {
+            transition: background-color 0.5s ease;
+        }
+        input#marks {
+            background: #464646;
+            border: solid 1px #ddd;
+            padding: 10px;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        input#marks::placeholder {
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        button#btncalc {
+            padding: 7px 40px;
+            font-size: 18px;
+            background: #badb00;
+            border: solid 1px #000;
+            border-radius: 5px;
+        }
+        </style>
+    </head>
+    <body>
+        <section class="calc">
+            <h1>Grade Calculator</h1>
+            <p>let's input your marks in below input field and get know your grade.</p>
+            <div class="inputmrk">
+                <label>Enter Marks(out of 100):</label>
+                <input id="marks" type="number" maxlength="3" min="0" max="100" placeholder="Enter Your Marks">
+                <button id="btncalc">Calculate</button>
+            </div>
+            <div id="output"></div>
+        </section>
+        
+    </body>
+    <script>
+        let calc = document.getElementById('btncalc')
+        let marks = document.getElementById("marks")
+        let output = document.getElementById("output")
+        calc.addEventListener('click',()=>{
+            let m = marks.value    
+            output.style.padding='10px 20px';    
+            if(m < 0 || m > 100 || m.trim() === '' || isNaN(m)){
+               output.textContent = "Enter A Valid Number between 0 to 100"
+               output.style.background = "orange"
+            }
+            else{
+                if(m > 89){
+                    output.textContent = `Excellent! You scored ${m} : Grade A`
+                    output.style.background = "green"
+                }else if( m > 79 ){
+                    output.textContent = `Great! You scored ${m} : Grade B`
+                    output.style.background = "green"
+                }else if( m > 69 ){
+                    output.textContent = `You scored ${m} : Grade C`
+                    output.style.background = "green"
+                }else if( m > 59 ){
+                    output.textContent = `You scored ${m} : Grade D`
+                    output.style.background = "green"
+                }else{
+                    output.textContent = "Grade F"
+                    output.style.background = "red"
+                }
+                
+            }
+        })
+        
+    </script>
+    </html>

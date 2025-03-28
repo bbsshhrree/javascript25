@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body background updation</title>
+    <style>
+        body{
+            display:flex ;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            text-align: center;
+            font-size: 25px;
+            margin: 20px 0;
+        }
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap:15px;
+        }
+        .buttons .button{
+            color: #fff;
+            font-size: 20px;
+            display: block;
+            padding: 10px 20px;
+            border: solid 2px #4e4e4e;
+            background-color: #3f3c3c;
+            cursor: pointer;
+        }
+        .buttons .button:hover{
+            color: transparent;
+        }
+        .buttons .button#yellow{
+            background-color: yellow;
+        }
+        .buttons .button#green{
+            background-color: green;
+        }
+        .buttons .button#Blue{
+            background-color: blue;
+        }
+        .buttons .button#red{
+            background-color: red;
+        }
+        .buttons .button#Black{
+            background-color: black;
+        }
+        .buttons .button#White{
+            background-color: white;
+            color: #000;
+            border-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Change Body color on following buttons click</h1>
+    <div class="buttons">
+        <span class="button" id="yellow">Yellow</span>
+        <span class="button" id="green">Green</span>
+        <span class="button" id="Blue">Blue</span>
+        <span class="button" id="red">Red</span>
+        <span class="button" id="Black">Black</span>
+        <span class="button" id="White">White</span>
+    </div>
+</body>
+<script>
+    const buttons = document.querySelectorAll('.button');
+//    console.log(buttons);
+    for(let i=0;i<buttons.length;i++){
+        buttons[i].addEventListener('click',() => {
+            let bgcolor = buttons[i].textContent;
+            document.querySelector('body').style.background = bgcolor;
+        });
+    }
+    
+</script>
+</html>
